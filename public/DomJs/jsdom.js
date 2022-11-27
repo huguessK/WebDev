@@ -2,7 +2,7 @@
 
 
 
-var Newcol=document.getElementById('NewColor');
+var Newcol=document.getElementsByClassName('NewColor')[0];
 
 
  Newcol.addEventListener('click', function onClick() {
@@ -34,4 +34,14 @@ function typeWriter() {
     }
     setTimeout(typeWriter, speed);
   }
+}
+
+function zoo_animal(){
+  //var port = process.env.PORT;
+  //if(port==null || port==""){
+    //port=3000;
+//  }
+
+  //get request to zoo page
+  window.location.replace("http://localhost:3000/zoo");
 }

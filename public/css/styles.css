@@ -98,7 +98,32 @@ nav ul li a:hover{
 
 
 
+.projects-page{
+  margin: 10% 30% 5% 30%; /*top right bottom left*/
+}
 
-/*Typing effect*/
+.project{
+  padding-bottom: 10%;
+}
 
-/* fin typingeffect*/
+.footer p{
+  text-align: center;
+}
+
+
+.zoo{
+  padding-bottom: 10%;
+  margin-left: 35%;
+
+}
+
+.zoo img{
+  height: 50%;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.zoo p{
+  font-size: 10px;
+  text-align: justify;
+}

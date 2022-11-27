@@ -1,0 +1,21 @@
+<%- include("partials/header"); -%>
+
+<h1><center>  Welcome to my virtual zoo!</center></h1>
+
+
+<%Object.entries(data).forEach((item)=> {%>
+  <%if(item[0]!="image_link" && item[0]!="id"){%>
+    <span> <%= item[1] %>  </span>
+  <%}else{%>
+    <%if(item[0]==="image_link"){%>
+      <div class="zoo">
+        <img src=<%=item[1]%>  alt="animal image">
+        <p>Credit: Zoo Animal API</p>
+      </div>
+    <%}%>
+  <%}%>
+<%});%>
+
+<%- include("partials/footer"); -%>
+
+<!-- data.name pour avoir le nom de l'animal -->
