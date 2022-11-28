@@ -3,9 +3,19 @@
 <h1><center>  Welcome to my virtual zoo!</center></h1>
 
 
-<%Object.entries(data).forEach((item)=> {%>
+<%Object.entries(data).forEach((item,index)=> {%>
   <%if(item[0]!="image_link" && item[0]!="id"){%>
-    <span> <%= item[1] %>  </span>
+    <%if(index<=5){%>
+      <div class="zoo-info1">
+        <p> <%= item[1] %> </p>
+        </div>
+    <%}else{%>
+
+      <div class="zoo-info2">
+        <p> <%= item[1] %> </p>
+        </div>
+    <%}%>
+
   <%}else{%>
     <%if(item[0]==="image_link"){%>
       <div class="zoo">

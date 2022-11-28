@@ -36,12 +36,12 @@ function typeWriter() {
   }
 }
 
-function zoo_animal(){
+function fish(){
   //var port = process.env.PORT;
   //if(port==null || port==""){
     //port=3000;
 //  }
 
   //get request to zoo page
-  window.location.replace("http://localhost:3000/zoo");
+  window.location.replace("http://localhost:3000/fish");
 }
