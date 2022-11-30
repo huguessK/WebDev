@@ -14,6 +14,10 @@
   background: #eff4fd;
 }
 
+ul.navbouton{
+  padding-left: 40%;
+}
+
 nav{
   display: flex;
   width: 84%;
@@ -80,7 +84,7 @@ nav ul li a:hover{
   height: 40%;
   position: absolute;
   bottom: 0;
-  right: 100px;
+  right: 20%;
 }
 
 
@@ -91,6 +95,7 @@ nav ul li a:hover{
   position: absolute;
 
   bottom: 60% ;
+  padding-right: 20%;
   /*transform: translateX(-50%);*/
   transition: bottom 1s, top 1s;
   border-radius: 50%;
@@ -111,6 +116,8 @@ nav ul li a:hover{
 }
 
 
+
+/*zoo animal*/
 .zoo{
   padding-bottom: 10%;
   margin-left: 35%;
@@ -123,22 +130,36 @@ nav ul li a:hover{
   border-radius: 5px;
 }
 
+
+
 .zoo p{
   font-size: 10px;
   text-align: justify;
 }
 
-.zoo-info1{
-  border: 1px solid #4CAF50;
+.zoo-info{
+  /*border: 1px solid #4CAF50;*/
   width: 30%;
+  position: relative;
+ left: 15%;
+
 
 }
 
-.zoo-info2{
-  border: 1px solid #000000;
-  width: 30%;
-
+/*search bar*/
+.search-bar{
+  width: 60%;
 }
+
+.image-news img{
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10%;
+  border-radius: 5px;
+}
+
 
 
 

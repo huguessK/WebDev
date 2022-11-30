@@ -14,21 +14,19 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-//animal api
-//const zoo_api_url="https://zoo-animal-api.herokuapp.com/animals/rand";
-const fish_api_url="https://www.fishwatch.gov/api/species"
+//news api
+const options = {
+	"method": "GET",
+	"hostname": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+	"port": null,
+	"path": "/api/search/NewsSearchAPI?q=didier%20drogba&pageNumber=1&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null",
+	"headers": {
+		"X-RapidAPI-Key": "707d479d56mshe21b2bd19b3af67p105a31jsn71a449d0816b",
+		"X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+		"useQueryString": true
+	}
+};
 
-
-// Initialize the Authentication of Gmail Options
-var transportar = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user:  process.env.EMAIL, // Your Gmail ID
-    pass:  process.env.PASSWORD,         // Your Gmail Password
-  },
-});
-
-console.log(transportar)
 //contact me page
 app.get("/contact-me",function(req,res){
   res.render("contact");
@@ -36,21 +34,17 @@ app.get("/contact-me",function(req,res){
 
 //message sent successfully display message-sent page
 app.post("/message-sent",function(req,res){
+
+  //just to see the request's body
   console.log(req.body);
 
-  // Define mailing options like Sender Email and Receiver.
-  var mailOptions = {
-    from:  process.env.EMAIL, // Sender ID
-    to:  process.env.EMAIL, // Reciever ID
-    subject: "New message", // Mail Subject
-    text: req.body.firstname+" "+ req.body.lastname+ " message: " + req.body.subject
+  // Define message object to send in database(mongodb)
+  var message = {
+    email:  req.body.email, // Sender ID
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    content:req.body.subject
   };
-
-  // Send an Email
-  transportar.sendMail(mailOptions, (error, info) => {
-    if (error) console.log(error);
-    console.log(info);
-  });
 
 
   res.render("message-sent");
@@ -63,6 +57,8 @@ app.get("/projects",function(req,res){
 })
 
 
+
+
 //get request to the root
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/index.html");
@@ -70,31 +66,52 @@ app.get("/",function(req,res){
 
 
 
-//get request to zoo page
-app.get("/fish",function(req,res){
+//get request to news page
+app.get("/news",function(request,response){
+
+  const req = https.request(options, function (res) {
+  let chunks = "";
+
+  	res.on("data", function (chunk) {
+  		chunks += chunk;
+  	});
+
+  	res.on("end", function () {
+      let datas=JSON.parse(chunks);
+			datas=datas["value"];
+			let news=[];
+			for(let i=0; i<datas.length; i++){
+				//let img_url=datas[i]["image"]["url"].toLowerCase();
+				//if(img_url.substr(img_url.length - 4).includes("jpg") || img_url.substr(img_url.length - 4).includes("png") ){
+				//news.push(
+				//	[ datas[i]["image"]["url"],
+				//	datas[i]["title"] ] );
+				//	}
+
+					if(datas[i]["image"]["url"]!=""){
+						news.push(
+							[ datas[i]["image"]["url"],
+							datas[i]["title"] ] );
+					}
 
 
-https.get(fish_api_url, (resp) => {
-  let data = '';
 
-  // Un morceau de réponse est reçu
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
+			}//end for bracket
 
-  // La réponse complète à été reçue. On affiche le résultat.
-  resp.on('end', () => {
-    let datas=JSON.parse(data);
-    console.log(datas[1]);
-    res.render('fish',{data:datas[1]['Species Name']});
-  });
+			console.log(news);
+    response.render('news',{data:news});
+  	});
 
-}).on("error", (err) => {
-  console.log("Error: " + err.message);
-    res.render("ApiError");
-});
 
-});
+    res.on("error", (err) => {
+   console.log("Error: " + err.message);
+     res.render("ApiError");
+   });
+
+ });
+   req.end();
+ });
+
 
 
 
