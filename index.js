@@ -14,14 +14,18 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+//news data copy
+
+let newsCopy=[];
+
 //news api
 const options = {
 	"method": "GET",
 	"hostname": "contextualwebsearch-websearch-v1.p.rapidapi.com",
 	"port": null,
-	"path": "/api/search/NewsSearchAPI?q=didier%20drogba&pageNumber=1&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null",
+	"path": "/api/search/NewsSearchAPI?q=allassane%20ouattara&pageNumber=1&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null",
 	"headers": {
-		"X-RapidAPI-Key": "707d479d56mshe21b2bd19b3af67p105a31jsn71a449d0816b",
+		"X-RapidAPI-Key": process.env.API_KEY,
 		"X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
 		"useQueryString": true
 	}
@@ -52,6 +56,10 @@ app.post("/message-sent",function(req,res){
 
 
 
+
+
+
+//request to projects page
 app.get("/projects",function(req,res){
   res.render("projects");
 })
@@ -91,14 +99,20 @@ app.get("/news",function(request,response){
 					if(datas[i]["image"]["url"]!=""){
 						news.push(
 							[ datas[i]["image"]["url"],
-							datas[i]["title"] ] );
+							datas[i]["title"] ,
+								//datas[i]["description"],
+								datas[i]["body"],
+								datas[i]["snippet"],
+								datas[i]["datePublished"]
+						]);
 					}
 
 
 
 			}//end for bracket
+			newsCopy=news;
 
-			console.log(news);
+			//console.log(news);
     response.render('news',{data:news});
   	});
 
@@ -113,6 +127,13 @@ app.get("/news",function(request,response){
  });
 
 
+ //request to news-content page
+ app.get("/news-content/:contentID",function(req,res){
+	 let id=req.params.contentID;
+	 //console.log(id);
+	 //console.log(typeof(id));
+   res.render("news-content",{data:newsCopy,id:id});
+ })
 
 
 

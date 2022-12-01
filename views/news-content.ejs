@@ -1,0 +1,15 @@
+<%- include("partials/header"); -%>
+
+
+      <h3><center><%=data[id][1]%></center></h3>
+      <div class="image-news-contents">
+        <img src=<%=data[id][0]%>  alt="news picture">
+      </div>
+      <div class="news-body">
+        <p> <%=data[id][2] %></p>
+      </div>
+      <p id=datePublished>date published:<%=data[id][4]%>  @credit RapidApi/Web Search API</p>
+
+
+
+<%- include("partials/footer"); -%>

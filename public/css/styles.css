@@ -160,8 +160,31 @@ nav ul li a:hover{
   border-radius: 5px;
 }
 
+/*news-content paage*/
+#datePublished{
+  font-size: 10px;
+  color: blue;
+}
 
+.news-body{
+  padding-bottom: 1px;
 
+}
+
+.image-news-contents img{
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 1%;
+  border-radius: 5px;
+}
+
+.news-body p{
+text-align: justify;
+padding-left: 5%;
+padding-right: 5%;
+}
 
 
 /*contact-me form css*/
