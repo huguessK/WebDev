@@ -1,6 +1,6 @@
 <%- include("partials/header"); -%>
 
-<h3 id=contact-me>Contact me</h3>
+<%#<h3 id=contact-me>Contact me</h3>%>
 <div class="contact-me-message">
   <p>A suggestion to improve my website?</p>
   <p>You want me to work with you on a project?</p>
@@ -12,7 +12,7 @@
 <div class="container-contact">
   <form action="/message-sent" method="post">
 
-    <label for="email"><b>Email<span style="color:red;">*</span></b></label>
+    <label for="email">Email<span style="color:red;">*</span></label>
    <input type="text" placeholder="Enter Email" name="email"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
 
     <label for="fname">First Name</label>

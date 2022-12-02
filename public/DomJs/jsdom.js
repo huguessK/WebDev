@@ -20,9 +20,11 @@ var Newcol=document.getElementsByClassName('NewColor')[0];
 
 //typing text effect
 
-var i = 0;
-var txt = "I'm a computer science and electronic engineer";
-var speed = 50;
+let i = 0;
+//let txt = "I'm a computer science and electronic engineer"
+let txt= "Welcome to my personal website!";
+
+const speed = 75;
 
 function typeWriter() {
   if (i < txt.length) {

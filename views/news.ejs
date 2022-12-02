@@ -1,13 +1,17 @@
 <%- include("partials/header"); -%>
 
-  <h3><center>News search</center></h3>
+  <h3><center>Welcome to your search engine</center></h3>
+  <p><center>Please type your subject in the search bar then hit</center></p>
+  <p><center>the enter key on your keyboard or click on the search button.</center></p>
 
-  <div class="search-bar"
-    <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</div>
+
+<form class="d-flex search-bar" role="seach" action="/news" method="post">
+        <input class="form-control me-2" type="text" name="searchText" placeholder="Search" aria-label="Search">
+          <div class="searchbutton">
+            <button class="" type="submit" name="searchButton">Search</button>
+            </div>
+
+</form>
 
 
 <%for(let i=0; i<data.length; i++){%>

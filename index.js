@@ -1,3 +1,4 @@
+//jshint esversion: 6
 
 require("dotenv").config();
 const express = require("express");
@@ -19,11 +20,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 let newsCopy=[];
 
 //news api
+const OptionPath1="/api/search/NewsSearchAPI?q=";
+const OptionPath2="&pageNumber=1&pageSize=20&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null";
+
 const options = {
 	"method": "GET",
 	"hostname": "contextualwebsearch-websearch-v1.p.rapidapi.com",
 	"port": null,
-	"path": "/api/search/NewsSearchAPI?q=allassane%20ouattara&pageNumber=1&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null",
+	"path": "",
 	"headers": {
 		"X-RapidAPI-Key": process.env.API_KEY,
 		"X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
@@ -74,8 +78,15 @@ app.get("/",function(req,res){
 
 
 
-//get request to news page
-app.get("/news",function(request,response){
+//post(search form) to news page
+app.post("/news",function(request,response){
+
+	//catch entered text and update api options
+	let body=request.body.searchText;
+	body=body.toLowerCase();
+	body=encodeURIComponent(body.trim());
+	console.log(body);
+ 	options["path"]=OptionPath1+body+OptionPath2;
 
   const req = https.request(options, function (res) {
   let chunks = "";
@@ -138,6 +149,10 @@ app.get("/news",function(request,response){
 
 
 
+ //request to news page
+ app.get("/news",function(req,res){
+	res.render("news",{data:[]});
+ })
 
 
 

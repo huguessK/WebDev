@@ -47,6 +47,7 @@ nav ul li a:hover{
 .detel{
   margin-left: 8%;
   margin-top: 13%;
+
 }
 
 
@@ -83,8 +84,9 @@ nav ul li a:hover{
   width: 40%;
   height: 40%;
   position: absolute;
-  bottom: 0;
-  right: 20%;
+  bottom: 5%;
+  right: 25%;
+
 }
 
 
@@ -115,7 +117,17 @@ nav ul li a:hover{
   text-align: center;
 }
 
+h5.pointer{
+  cursor:pointer;
+}
 
+.carousel-item img{
+  border-radius: 5px;
+}
+
+.carousel-item {
+  width: 50%;
+}
 
 /*zoo animal*/
 .zoo{
@@ -149,14 +161,28 @@ nav ul li a:hover{
 /*search bar*/
 .search-bar{
   width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.searchbutton button{
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+
 
 .image-news img{
   width: 50%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   border-radius: 5px;
 }
 
@@ -214,13 +240,24 @@ input[type=submit]:hover {
 
 .container-contact {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: #eff4fd;
   padding: 20px;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid;
+
 }
+
+.container-contact form input[type=submit]{
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
 
 h3#contact-me{
   text-align: center;
