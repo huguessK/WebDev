@@ -84,7 +84,7 @@ nav ul li a:hover{
   width: 40%;
   height: 40%;
   position: absolute;
-  bottom: 5%;
+  bottom: 8%;
   right: 25%;
 
 }
@@ -115,7 +115,9 @@ nav ul li a:hover{
 
 .footer p{
   text-align: center;
+  font-size: 10px;
 }
+
 
 h5.pointer{
   cursor:pointer;
@@ -177,14 +179,41 @@ h5.pointer{
 
 
 
-.image-news img{
-  width: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 5%;
-  border-radius: 5px;
+/*news.ejs css*/
+
+
+.flotte{
+  display: flex;
+        align-items: center;
+        padding-bottom: 5%;
+        margin-left: 25%;
+
 }
+
+.flotte img{
+width: 200px;
+border-radius: 10px;
+}
+
+.flotte image{
+        flex-basis: 40%;
+}
+
+.flotte p{
+  text-align: left;
+       padding-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /*news-content paage*/
 #datePublished{
@@ -210,6 +239,22 @@ h5.pointer{
 text-align: justify;
 padding-left: 5%;
 padding-right: 5%;
+}
+
+.next-page {
+  text-align: center;
+}
+
+#Previous{
+  margin-right: 10px;
+}
+
+#Next{
+    margin-left: 10px;
+}
+
+.page{
+  color : black;
 }
 
 
@@ -267,3 +312,11 @@ h3#contact-me{
   text-align: center;
 }
 /*-----*/
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none;}
+
+
+a:active { text-decoration: none;}

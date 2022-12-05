@@ -3,10 +3,10 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const request = require ("request");
+const mongoose = require("mongoose");//not used in the end
+const request = require ("request");//not used in the end
 const https= require("https");
-var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');//not used in the end
 
 //creation of new espress object
 const app= express();
@@ -15,13 +15,15 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-//news data copy
+//news data copy, pageId
 
 let newsCopy=[];
+let NewsContent=[];
+let pageId=0;
 
 //news api
 const OptionPath1="/api/search/NewsSearchAPI?q=";
-const OptionPath2="&pageNumber=1&pageSize=20&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null";
+const OptionPath2="&pageNumber=1&pageSize=50&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null";
 
 const options = {
 	"method": "GET",
@@ -100,12 +102,6 @@ app.post("/news",function(request,response){
 			datas=datas["value"];
 			let news=[];
 			for(let i=0; i<datas.length; i++){
-				//let img_url=datas[i]["image"]["url"].toLowerCase();
-				//if(img_url.substr(img_url.length - 4).includes("jpg") || img_url.substr(img_url.length - 4).includes("png") ){
-				//news.push(
-				//	[ datas[i]["image"]["url"],
-				//	datas[i]["title"] ] );
-				//	}
 
 					if(datas[i]["image"]["url"]!=""){
 						news.push(
@@ -122,9 +118,9 @@ app.post("/news",function(request,response){
 
 			}//end for bracket
 			newsCopy=news;
-
+			NewsContent=news.slice(0,9);
 			//console.log(news);
-    response.render('news',{data:news});
+    response.render('news',{data:NewsContent});
   	});
 
 
@@ -143,15 +139,47 @@ app.post("/news",function(request,response){
 	 let id=req.params.contentID;
 	 //console.log(id);
 	 //console.log(typeof(id));
-   res.render("news-content",{data:newsCopy,id:id});
+
+   res.render("news-content",{data:NewsContent,id:id});
  })
 
+
+ //to manage the other content pages
+ app.get("/news/:ID",function(req,res){
+ 	let id=req.params.ID;
+	id=parseInt(id);
+
+	if(id>=1){
+		pageId=id;
+	}
+
+	//previous page
+	else if (id==0) {
+		if(pageId!=1){
+			pageId--;
+		}
+	}
+
+	//Next page
+	else{
+		pageId++;
+		if(pageId===6){
+			pageId=1;
+		}
+	}
+	//render page
+	if(newsCopy.length>=pageId*10 -1){
+		res.render("news",{data:newsCopy.slice((pageId-1)*10,(pageId*10)) });
+		NewsContent=newsCopy.slice((pageId-1)*10,(pageId*10));
+	}
+
+ })
 
 
 
  //request to news page
  app.get("/news",function(req,res){
-	res.render("news",{data:[]});
+	res.render("news",{data:["welcome"]});
  })
 
 
