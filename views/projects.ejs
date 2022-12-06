@@ -1,45 +1,42 @@
 <%- include("partials/header"); -%>
 
 <!-- Body  [Bootstrap used here]----->
-<div class="projects-page">
+<div class="projects-page projects-grid-container">
 
-    <div id="carouselExampleCaptions" class="carousel slide project" data-bs-ride="false">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  <%#projet 1%>
+
+    <div class="card project1" style="width: 18rem;">
+      <img src="images/search.jpg" class="card-img-top" alt="search image">
+      <div class="card-body">
+        <h5 class="card-title">Search engine using Web search API</h5>
+        <%#<p class="card-text">Search engine using Web search API</p>%>
+        <a  onclick="news()"class="btn btn-primary">See project</a>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="images/search.jpg" class="d-block w-100"  alt="news">
-          <div class="carousel-caption d-none d-md-block">
-            <h5 style="color:white;" class="pointer" onclick="news()"><b>See project</b></h5>
-            <p style="color:white;"><b>Search engine using Web search API</b></p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="images/ecom.jpg" class="d-block w-100" alt="CO2 emissions">
-          <div class="carousel-caption d-none d-md-block">
-            <h5 style="color:white;"><b>Coming</b></h5>
-            <p style="color:white;"><b>Multi-product eCommerce Webshop</b></p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="images/web3project.jpg" class="d-block w-100" alt="Sadvice App">
-          <div class="carousel-caption d-none d-md-block">
-            <h5 style="color:white;"><b>Coming</b></h5>
-            <p style="color:white;"><b>NFT Marketplace-Web3 Project</b></p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
+
+
+<%#projet 2%>
+  <div class="card project2" style="width: 18rem;">
+    <img src="images/ecom.jpg" class="card-img-top" alt="search image">
+    <div class="card-body">
+      <h5 class="card-title">Multi-product eCommerce Webshop</h5>
+      <%#<p class="card-text">Search engine using Web search API</p>%>
+      <a  href="" class="btn btn-primary">Coming</a>
+    </div>
+  </div>
+
+
+
+<%#projet 3%>
+  <div class="card project3" style="width: 18rem;">
+    <img src="images/web3project.jpg" class="card-img-top" alt="search image">
+    <div class="card-body">
+      <h5 class="card-title">NFT Marketplace-Web3 Project</h5>
+      <%#<p class="card-text">Search engine using Web search API</p>%>
+      <a  href="" class="btn btn-primary">Coming</a>
+    </div>
+  </div>
+
+
 </div>
 <%- include("partials/footer"); -%>
