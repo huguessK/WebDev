@@ -43,13 +43,21 @@
 
   <%# allow user's to go to next pages%>
 <div class="next-page">
-  <a id="Previous" href="/news/0">Previous</a>
+  <%if( numberResults>1){%>
+  <p> Page <span style="color: blue"><%=pageId%></span> /<%=numberResults-1%></p>
+  <%}%>
+
+  <%if( numberResults===1){%>
+  <p> Page <span style="color: blue">1</span>/1</p>
   <a class="page" href="/news/1">1</a>
-  <a class="page" href="/news/2">2</a>
-  <a class="page" href="/news/3">3</a>
-  <a class="page" href="/news/4">4</a>
-  <a class="page" href="/news/5">5</a>
-  <a class="Next" href="/news/N">Next</a>
+  <%}else{%>
+  <a id="Previous" href="/news/0">Previous</a>
+  <%for(let i=1; i<numberResults; i++){%>
+  <a class="page" href=<%="/news/"+i%>><%=i%></a>
+  <%}%>
+    <a class="Next" href="/news/N">Next</a>
+<%}%>
+
 </div>
 
 

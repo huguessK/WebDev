@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 let newsCopy=[];
 let NewsContent=[];
 let pageId=0;
+let numberResults=0;
+let pageNumber=0;
 
 //news api
 const OptionPath1="/api/search/NewsSearchAPI?q=";
@@ -100,6 +102,7 @@ app.post("/news",function(request,response){
   	res.on("end", function () {
       let datas=JSON.parse(chunks);
 			datas=datas["value"];
+			numberResults=datas.length; //between 0 to 50 for a given research
 			let news=[];
 			for(let i=0; i<datas.length; i++){
 
@@ -120,7 +123,8 @@ app.post("/news",function(request,response){
 			newsCopy=news;
 			NewsContent=news.slice(0,9);
 			//console.log(news);
-    response.render('news',{data:NewsContent});
+			pageNumber=Math.floor(numberResults/10)+1;
+    response.render('news',{data:NewsContent, numberResults: pageNumber, pageId:1});
   	});
 
 
@@ -155,7 +159,7 @@ app.post("/news",function(request,response){
 
 	//previous page
 	else if (id==0) {
-		if(pageId!=1){
+		if(pageId>1){
 			pageId--;
 		}
 	}
@@ -163,14 +167,20 @@ app.post("/news",function(request,response){
 	//Next page
 	else{
 		pageId++;
-		if(pageId===6){
+		if(pageId>=pageNumber){
 			pageId=1;
 		}
 	}
+
 	//render page
 	if(newsCopy.length>=pageId*10 -1){
-		res.render("news",{data:newsCopy.slice((pageId-1)*10,(pageId*10)) });
+		res.render("news",{data:newsCopy.slice((pageId-1)*10,(pageId*10)), numberResults: pageNumber, pageId:pageId });
 		NewsContent=newsCopy.slice((pageId-1)*10,(pageId*10));
+	}
+
+	else{
+		res.render("news",{data:newsCopy.slice((pageId-1)*10,newsCopy.length), numberResults: pageNumber, pageId:pageId});
+		NewsContent=newsCopy.slice((pageId-1)*10,newsCopy.length);
 	}
 
  })
