@@ -20,6 +20,6 @@ To run the project :
 - create a .env file in the project root
 - request a key for the Web search APi https://rapidapi.com/contextualwebsearch/api/web-search/details
 - configure the variable API_KEY, MONGODB_USERNAME, MONGODB_PASSWORD with your own, 
-    - these configurations must be done in a .env file to be created at the root of the project
+    - these configurations must be done in the .env file 
 - run the command line nodemon index.js or node index.js in your Node.js command prompt
 - open the app in your browser http://localhost:3000
