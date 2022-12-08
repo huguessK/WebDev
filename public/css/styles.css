@@ -162,17 +162,41 @@ border-radius: 10px;
        padding-left: 20px;
 }
 
+.news-title{
+  text-align: center;
+}
 
 
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px){
   /* For mobile phones: */
   .project-img{
     width: 10%;
-
   }
+
 }
 
+
+@media only screen and (max-width: 527px) {
+  /* For mobile phones: */
+
+  .flotte .image img{
+    width: 80%;
+  }
+
+  .flotte > p{
+    font-size: 10px;
+  }
+
+.news-title h3{
+font-size: 15px;
+}
+
+
+.news-title p{
+font-size: 11px;
+}
+
+}
 
 
 
@@ -181,7 +205,7 @@ border-radius: 10px;
 /*news-content paage*/
 #datePublished{
   font-size: 10px;
-  color: blue;
+  color: gray;
 }
 
 .news-body{
@@ -283,6 +307,42 @@ h3#contact-me{
 .contact-me-message{
   text-align: center;
 }
+
+form textarea{
+  height: 150px;
+}
+
+@media only screen and (max-width: 527px) {
+  .contact-me-message h3{
+    font-size: 20px;
+  }
+
+  .contact-me-message h4{
+    font-size: 15px;
+  }
+
+  .contact-me-message h5{
+    font-size: 15px;
+  }
+
+  form textarea{
+    height: 100px;
+  }
+
+  form input, form label{
+    font-size: 15px;
+}
+
+.container-contact{
+  padding: 5px;
+  width: 70%;
+}
+
+.photo{
+  width: 60%;
+  }
+}
+
 /*-----*/
 
 a:link { text-decoration: none; }
@@ -343,12 +403,22 @@ a:active { text-decoration: none;}
 }
 
 /*projects.ejs*/
-.projects-page{
-  margin-top: 5%;
-  margin-left: 40%; /*top right bottom left*/
-  margin-right: 40%;
+
+.card:hover img{
+  -ms-transform: scale(1.2); /* IE 9 */
+  transform: scale(1.2);
+  border-radius: 5px;
 }
 
+
+.projects-page{
+  margin-top: 5%;
+}
+
+.card {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 
@@ -363,10 +433,8 @@ a:active { text-decoration: none;}
   display: grid;
   grid-template-areas: 'project1 project2 project3';
   gap: 10px;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10%;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .projects-grid-container > div {
@@ -385,12 +453,13 @@ a:active { text-decoration: none;}
     grid-template-areas: 'project1'
      'project2' 'project3';
     gap: 10px;
-    padding: 10px;
-    margin-left: 30%;
+    padding-left: 0px;
+    padding-right: 0px;
   }
-
-
 }
+
+
+
 
 /*github link*/
 #github{
