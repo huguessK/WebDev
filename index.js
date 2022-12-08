@@ -3,7 +3,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");//not used in the end
+const mongoose = require("mongoose");
 const request = require ("request");//not used in the end
 const https= require("https");
 var nodemailer = require('nodemailer');//not used in the end
@@ -193,6 +193,51 @@ app.post("/news",function(request,response){
  })
 
 
+//send form data : email, last name, first name, message to mongodb
+//connection to mongo db locally
+
+mongoose.connect("mongodb+srv://"+process.env.MONGODB_USERNAME+":"+process.env.MONGODB_PASSWORD+"@contactmessage.3sihltd.mongodb.net/messageDB",function(err){
+  if(err){
+    console.log("connection to db failed");
+    console.log(err);
+  } else{
+
+    console.log("connection to db succeed");
+  }
+
+});
+
+const messageSchema = new mongoose.Schema ({
+  email: String,
+  firstname: String,
+  lastname: String,
+  message: String
+});
+
+const Message = mongoose.model("Message", messageSchema);
+
+
+app.post("/contact",function(req,res){
+
+const contactMessage = new Message ({
+	email:req.body.email,
+	firstname:req.body.firstname,
+	lastname:req.body.lastname,
+	message:req.body.subject
+});
+
+contactMessage.save(function(err){
+	if(err){
+		res.send("something goes wrong, please try again!");
+	}
+	else{
+		res.render("message-sent");
+
+	}
+}); //to insert the message in the DB
+
+
+})//end app.post
 
 
 

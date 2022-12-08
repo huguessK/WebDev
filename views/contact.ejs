@@ -10,7 +10,7 @@
 
 
 <div class="container-contact">
-  <form action="mailto:dev631152@gmail.com?subject=Suggestion" method="get" enctype="text/plain">
+  <form action="/contact" method="post">
 
     <label for="email">Email<span style="color:red;">*</span></label>
    <input type="text" placeholder="Enter Email" name="email"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
@@ -22,7 +22,7 @@
     <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
     <label for="subject">Message</label>
-    <textarea id="subject" name="subject" required placeholder="Write something.."></textarea>
+    <textarea id="subject" name="subject" required placeholder="Your message.." maxlength="150"></textarea>
 
     <input type="submit" value="Send message">
 
