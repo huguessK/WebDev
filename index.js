@@ -4,9 +4,10 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const request = require ("request");//not used in the end
+//const request = require ("request");//not used in the end
 const https= require("https");
-var nodemailer = require('nodemailer');//not used in the end
+//const nodemailer = require('nodemailer');//not used in the end
+//const $= require("jquery"); //not used in the end
 
 //creation of new espress object
 const app= express();
@@ -22,6 +23,7 @@ let NewsContent=[];
 let pageId=0;
 let numberResults=0;
 let pageNumber=0;
+let screenWidth=0;
 
 //news api
 const OptionPath1="/api/search/NewsSearchAPI?q=";
@@ -38,6 +40,14 @@ const options = {
 		"useQueryString": true
 	}
 };
+
+
+
+//about me page
+app.get("/about-me",function(req,res){
+  res.render("about");
+})
+
 
 //contact me page
 app.get("/contact-me",function(req,res){
@@ -64,14 +74,10 @@ app.post("/message-sent",function(req,res){
 
 
 
-
-
-
 //request to projects page
 app.get("/projects",function(req,res){
   res.render("projects");
 })
-
 
 
 
@@ -124,7 +130,7 @@ app.post("/news",function(request,response){
 			NewsContent=news.slice(0,9);
 			//console.log(news);
 			pageNumber=Math.floor(numberResults/10)+1;
-    response.render('news',{data:NewsContent, numberResults: pageNumber, pageId:1});
+    response.render('news',{data:NewsContent, numberResults: pageNumber, pageId:1, width:screenWidth});
   	});
 
 
@@ -153,16 +159,25 @@ app.post("/news",function(request,response){
  	let id=req.params.ID;
 	id=parseInt(id);
 
-	if(id>=1){
+
+	if(id>30){
+		screenWidth=id; //screen width in px
+			res.render("news",{data:["welcome"]});
+	}
+
+
+	else if(id>=1 && id<=30){
 		pageId=id;
 	}
 
+
 	//previous page
-	else if (id==0) {
+	else if (id===0) {
 		if(pageId>1){
 			pageId--;
 		}
 	}
+
 
 	//Next page
 	else{
@@ -174,12 +189,12 @@ app.post("/news",function(request,response){
 
 	//render page
 	if(newsCopy.length>=pageId*10 -1){
-		res.render("news",{data:newsCopy.slice((pageId-1)*10,(pageId*10)), numberResults: pageNumber, pageId:pageId });
+		res.render("news",{data:newsCopy.slice((pageId-1)*10,(pageId*10)), numberResults: pageNumber, pageId:pageId, width:screenWidth });
 		NewsContent=newsCopy.slice((pageId-1)*10,(pageId*10));
 	}
 
 	else{
-		res.render("news",{data:newsCopy.slice((pageId-1)*10,newsCopy.length), numberResults: pageNumber, pageId:pageId});
+		res.render("news",{data:newsCopy.slice((pageId-1)*10,newsCopy.length), numberResults: pageNumber, pageId:pageId, width:screenWidth});
 		NewsContent=newsCopy.slice((pageId-1)*10,newsCopy.length);
 	}
 
@@ -187,10 +202,10 @@ app.post("/news",function(request,response){
 
 
 
- //request to news page
+ /*request to news page
  app.get("/news",function(req,res){
 	res.render("news",{data:["welcome"]});
- })
+})*/
 
 
 //send form data : email, last name, first name, message to mongodb
@@ -238,7 +253,6 @@ contactMessage.save(function(err){
 
 
 })//end app.post
-
 
 
 

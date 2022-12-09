@@ -8,7 +8,7 @@
 
 let i = 0;
 //let txt = "I'm a computer science and electronic engineer"
-let txt= "Welcome to my personal website!";
+let txt= "Welcome to my website!";
 
 const speed = 75;
 
@@ -27,5 +27,6 @@ function typeWriter() {
 function news(){
   //get request to news page
   //window.location.replace("http://localhost:3000/news");
-  window.location.replace("/news");
+  let screenwidth=window.screen.width;
+  window.location.replace("/news/"+screenwidth);
 }

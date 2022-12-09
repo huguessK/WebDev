@@ -1,7 +1,7 @@
 *{
   margin : 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 
 }
 
@@ -179,22 +179,29 @@ border-radius: 10px;
 @media only screen and (max-width: 527px) {
   /* For mobile phones: */
 
-  .flotte .image img{
-    width: 80%;
+  .noflotte{
+    padding-bottom: 7%;
   }
 
-  .flotte > p{
-    font-size: 10px;
+  .noflotte img{
+    width: 35%;
+    border-radius: 5px;
+    padding-left: 1%;
+  }
+
+  .noflotte > p{
+    font-size: 13px;
   }
 
 .news-title h3{
-font-size: 15px;
+font-size: 17px;
 }
 
 
 .news-title p{
-font-size: 11px;
+font-size: 13px;
 }
+
 
 }
 
@@ -306,6 +313,8 @@ h3#contact-me{
 
 .contact-me-message{
   text-align: center;
+  padding-top: 2%;
+  padding-bottom: 1%;
 }
 
 form textarea{
@@ -354,6 +363,8 @@ a:visited { text-decoration: none;}
 a:active { text-decoration: none;}
 
 /*tehnologies */
+
+
 
 .item1 { grid-area: item1; }
 .item2 { grid-area: item2; }
@@ -479,5 +490,11 @@ a:active { text-decoration: none;}
   cursor: pointer;
   border-radius: 10px;
   background-color: #008CBA; /*Blue*/
-  
+
+}
+
+/* about/ejs*/
+.about{
+  background: #eff4fd;
+  text-align: center;
 }

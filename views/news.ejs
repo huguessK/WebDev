@@ -17,6 +17,8 @@
   </div>
 
 </form>
+
+
 <%if(data[0]=="welcome"){%>
 <p> </p>
 <%}else{%>
@@ -26,43 +28,69 @@
 </p>
 
 <%}else{%>
-<%for(let i=0; i<data.length; i++){%>
+  <%if(width>527){%>
+    <%for(let i=0; i<data.length; i++){%>
 
-<div class="flotte">
-  <div class="image">
-    <img src=<%=data[i][0]%> alt="news picture">
-  </div>
+    <div class="flotte">
+      <div class="image">
+        <img src=<%=data[i][0]%> alt="news picture">
+      </div>
 
-  <p> <%=data[i][1].substring(0,Math.round(data[i][1].length/2)); %><br />
-    <%=data[i][1].substring(Math.round(data[i][1].length/2),data[i][1].length); %>...
-    <a href=<%="/news-content/"+i%>>Read More</a>
-  </p>
-</div>
-<%}%>
+      <p> <%=data[i][1].substring(0,Math.round(data[i][1].length/2)); %><br />
+        <%=data[i][1].substring(Math.round(data[i][1].length/2),data[i][1].length); %>...
+        <a href=<%="/news-content/"+i%>>Read More</a>
+      </p>
+    </div>
+  <%}}else{%>
+    <%for(let i=0; i<data.length; i++){%>
+
+    <div class="noflotte">
+
+      <p> <%=data[i][1].substring(0,Math.round(data[i][1].length/2)); %><br />
+        <%=data[i][1].substring(Math.round(data[i][1].length/2),data[i][1].length); %>...
+        <a href=<%="/news-content/"+i%>>Read More</a>
+      </p>
+
+      <div class="image">
+        <img src=<%=data[i][0]%> alt="news picture">
+      </div>
+
+    </div>
+  <%}}%>
+
+
 
   <%# allow user's to go to next pages%>
 <div class="next-page">
   <%if( numberResults>1){%>
   <p> Page <span style="color: blue"><%=pageId%></span> /<%=numberResults-1%></p>
-  <%}%>
-
-  <%if( numberResults===1){%>
-  <p> Page <span style="color: blue">1</span>/1</p>
-  <a class="page" href="/news/1">1</a>
-  <%}else{%>
   <a id="Previous" href="/news/0">Previous</a>
   <%for(let i=1; i<numberResults; i++){%>
   <a class="page" href=<%="/news/"+i%>><%=i%></a>
   <%}%>
     <a class="Next" href="/news/N">Next</a>
-<%}%>
+  <%}%>
+
+  <%if( numberResults===1){%>
+  <p> Page <span style="color: blue">1</span>/1</p>
+  <a class="page" href="/news/1">1</a>
+  <%}%>
+
+<%}}%>
+
+
+
+
+
+
+
+
 
 </div>
 
 
 
-<%}%>
-<%}%>
+
 
 
 
