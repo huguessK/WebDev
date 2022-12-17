@@ -130,6 +130,7 @@ app.post("/news",function(request,response){
 			NewsContent=news.slice(0,9);
 			//console.log(news);
 			pageNumber=Math.floor(numberResults/10)+1;
+			pageId=1;
     response.render('news',{data:NewsContent, numberResults: pageNumber, pageId:1, width:screenWidth});
   	});
 
