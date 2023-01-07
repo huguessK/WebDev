@@ -498,3 +498,9 @@ a:active { text-decoration: none;}
   background: #eff4fd;
   text-align: center;
 }
+
+.certificates {
+  text-align: center;
+  text-decoration: underline overline;
+  margin-right: 7%;
+}
