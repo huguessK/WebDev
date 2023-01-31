@@ -510,3 +510,8 @@ a:active { text-decoration: none;}
   text-decoration: underline overline;
   margin-right: 7%;
 }
+
+
+.courses{
+  list-style-type: none;
+}
