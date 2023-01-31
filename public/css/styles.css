@@ -373,12 +373,15 @@ a:active { text-decoration: none;}
 .item5 { grid-area: item5; }
 .item6 { grid-area: item6; }
 
+.item7 { grid-area: item7; }
+.item8 { grid-area: item8; }
+.item9 { grid-area: item9; }
 
 
 .grid-container {
   display: grid;
   grid-template-areas: 'item1 item2 item3'
-    'item4 item5 item6';
+    'item4 item5 item6' 'item7 item8 item9';
   gap: 1px;
 
   padding: 10px;
@@ -405,7 +408,9 @@ a:active { text-decoration: none;}
     display: grid;
     grid-template-areas: 'item1 item2'
       'item3 item4'
-      'item5 item6';
+      'item5 item6'
+      'item7 item8'
+      'item9 item9'.
     gap: 1px;
 
     padding: 10px;
@@ -436,13 +441,13 @@ a:active { text-decoration: none;}
 .project1 { grid-area: project1; }
 .project2 { grid-area: project2; }
 .project3 { grid-area: project3; }
-
+.project4 { grid-area: project4; }
 
 
 
 .projects-grid-container {
   display: grid;
-  grid-template-areas: 'project1 project2 project3';
+  grid-template-areas: 'project1 project2' 'project3 project4';
   gap: 10px;
   padding-left: 0px;
   padding-right: 0px;
@@ -458,11 +463,11 @@ a:active { text-decoration: none;}
 
 
 @media only screen and (max-width: 800px) {
-  /* For mobile phones: */
+  /* For small size */
   .projects-grid-container {
     display: grid;
     grid-template-areas: 'project1'
-     'project2' 'project3';
+     'project2' 'project3' 'project4';
     gap: 10px;
     padding-left: 0px;
     padding-right: 0px;
@@ -497,6 +502,7 @@ a:active { text-decoration: none;}
 .about{
   background: #eff4fd;
   text-align: center;
+  min-height: 400px;
 }
 
 .certificates {
