@@ -508,7 +508,8 @@ a:active { text-decoration: none;}
 .certificates {
   text-align: center;
   text-decoration: underline overline;
-  margin-right: 7%;
+  text-decoration-color: #2196f3
+  /*margin-left: 3%;*/
 }
 
 
