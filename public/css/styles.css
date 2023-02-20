@@ -513,6 +513,21 @@ a:active { text-decoration: none;}
 }
 
 
-.courses{
+.no-bullet{
   list-style-type: none;
+}
+
+
+/* aiqualityApp.ejs*/
+.airquality{
+  background: #eff4fd;
+  text-align: center;
+  min-height: 400px;
+}
+
+.airquality-carousel{
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
 }

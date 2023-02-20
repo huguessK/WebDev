@@ -74,6 +74,12 @@ app.post("/message-sent",function(req,res){
 
 
 
+//request to aiqualityApp page
+app.get("/airqualityApp",function(req,res){
+  res.render("airqualityApp");
+})
+
+
 //request to projects page
 app.get("/projects",function(req,res){
   res.render("projects");

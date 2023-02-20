@@ -1,0 +1,68 @@
+<%- include("partials/header"); -%>
+
+<div class="airquality">
+
+  <h5><b>This application provides real-time information on air quality in different cities around the world.</b></h5>
+  <p>
+    Specifically, this application allows to :
+  <ul class="no-bullet">
+    <li>check the Air Quality Index (AQI) of your city or another city in the world.</li>
+    <li>see the health implication according to the Air Quality Index.</li>
+  </ul>
+  </p>
+  <h5><b>About the AQI (Air Quality Index)</b></h5>
+  <p>
+    The AQI (Air Quality Index) is based on air pollutants (PM2.5, PM10, 03, NO2, SO2, CO ) that have adverse effects on human health and the environment.
+  </p>
+  <p>
+    The AQI is divided into six categories. Each category corresponds to a different level of air pollution and health concern.
+  </p>
+  <h5><b>Technologies used</b></h5>
+  <p>
+    <ul class="no-bullet">
+      <li>Flutter </li>
+      <li>Android Studio</li>
+  </p>
+
+
+    <h5><b>Download links</b></h5>
+    <p>
+      <ul class="no-bullet">
+        <li><a href="https://play.google.com/store/apps/details?id=com.huguesk.airquality"> Android</a> </li>
+        <li><a href="##"> iOS (not yet available on App Store - Coming)</a> </li>
+      </ul>
+    </p>
+
+    <h5><b>Some images of the app</b></h5>
+    <!--Carousel - Bootstrap-->
+    <div id="carouselExample" class="carousel slide airquality-carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/airqualityApp/1.webp" class="d-block w-100" alt="appimage">
+        </div>
+
+        <%for(let i=2; i<=8; i++){%>
+        <div class="carousel-item">
+          <img src=<%="images/airqualityApp/"+i+".webp"%> class="d-block w-100" alt="appimage">
+        </div>
+        <%}%>
+
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+</div>
+
+
+
+
+<%- include("partials/footer"); -%>
