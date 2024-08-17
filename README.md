@@ -18,7 +18,7 @@ To run the project:
 
 - install all the required packages -> npm install
 - create a .env file in the project root
-- request a key for the Web search APi https://rapidapi.com/contextualwebsearch/api/web-search/details
+- request a key for the Web search API https://rapidapi.com/marindelija/api/youtube-search-results
 - configure the variable API_KEY, MONGODB_USERNAME, MONGODB_PASSWORD with your own,
     - these configurations must be done in the .env file
 - run the command line nodemon index.js or node index.js in your Node.js command prompt
