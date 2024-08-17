@@ -2,11 +2,9 @@
 
 <div class="news-title">
 
-  <h3><b>Welcome to your search engine</b></h3>
+  <h3><b>Welcome to your video search Platform</b></h3>
 
-  <p>Please type your subject in the search bar then hit</p>
-
-  <p>the enter key on your keyboard or click on the search button.  </p>
+  <p>Please type the title in the search bar</p>
 
 </div>
 
@@ -27,32 +25,42 @@
   <center>Not found </center>
 </p>
 
+
+
+
 <%}else{%>
   <%if(width>527){%>
     <%for(let i=0; i<data.length; i++){%>
 
     <div class="flotte">
-      <div class="image">
-        <img src=<%=data[i][0]%> alt="news picture">
-      </div>
+        <div class="image">
+          <img src="<%=data[i][0]%>" alt="video picture">
+          <button class="btn btn-dark" onclick="window.location.href='<%=data[i][2]%>';">Play</button>
+        </div>
 
-      <p> <%=data[i][1].substring(0,Math.round(data[i][1].length/2)); %><br />
-        <%=data[i][1].substring(Math.round(data[i][1].length/2),data[i][1].length); %>...
-        <a href=<%="/news-content/"+i%>>Read More</a>
-      </p>
+       <p>
+         <%=data[i][1].substring(0,60); %>...
+       </p>
+       <p style="color: blue">
+         <%=data[i][4]%> views
+       </p>
+
     </div>
   <%}}else{%>
     <%for(let i=0; i<data.length; i++){%>
 
     <div class="noflotte">
 
-      <p> <%=data[i][1].substring(0,Math.round(data[i][1].length/2)); %><br />
-        <%=data[i][1].substring(Math.round(data[i][1].length/2),data[i][1].length); %>...
-        <a href=<%="/news-content/"+i%>>Read More</a>
+      <p>
+        <%=data[i][1].substring(0,60); %>...
+      </p>
+      <p style="color: blue">
+        <%=data[i][4]%> views
       </p>
 
       <div class="image">
-        <img src=<%=data[i][0]%> alt="news picture">
+          <img src="<%=data[i][0]%>" alt="video picture">
+          <button class="btn btn-dark" onclick="window.location.href='<%=data[i][2]%>';">Play</button>
       </div>
 
     </div>
@@ -60,8 +68,10 @@
 
 
 
-  <%# allow user's to go to next pages%>
-<div class="next-page">
+
+
+ <%#lines 74-90 Might be useful if I choose another API --> no deletion%>
+<div class="next-page" >
   <%if( numberResults>1){%>
   <p> Page <span style="color: blue"><%=pageId%></span> /<%=numberResults-1%></p>
   <a id="Previous" href="/news/0">Previous</a>
@@ -77,16 +87,8 @@
   <%}%>
 
 <%}}%>
-
-
-
-
-
-
-
-
-
 </div>
+
 
 
 

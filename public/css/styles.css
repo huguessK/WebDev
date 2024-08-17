@@ -142,24 +142,25 @@ h5.pointer{
 
 .flotte{
   display: flex;
-        align-items: center;
-        padding-bottom: 5%;
-        margin-left: 25%;
+  align-items: center;
+  padding-bottom: 5%;
+  margin-left: 20%;
 
 }
 
 .flotte img{
-width: 200px;
-border-radius: 10px;
+width: 80%;
+border-radius: 5%;
 }
 
 .flotte image{
-        flex-basis: 40%;
+flex-basis: 80%;
 }
+
 
 .flotte p{
   text-align: left;
-       padding-left: 20px;
+  padding-left: 20px;
 }
 
 .news-title{
@@ -242,6 +243,8 @@ padding-right: 5%;
 .next-page p{
   font-size: 12px;
 }
+
+
 
 
 

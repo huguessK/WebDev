@@ -2,9 +2,9 @@
 
 <%#<h3 id=contact-me>Contact me</h3>%>
 <div class="contact-me-message">
-  <h3>A suggestion to improve my website?</h3>
+  <h3>Suggestions to enhance my website?</h3>
   <!--<h4>You want me to work with you on a project?</h4>-->
-  <h5>Please feel free to contact me.</h5>
+  <h5>Don't hesitate to get in touch.</h5>
   </div>
 
 
@@ -13,16 +13,16 @@
   <form action="/contact" method="post">
 
     <label for="email">Email<span style="color:red;">*</span></label>
-   <input type="text" placeholder="Enter Email" name="email"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+   <input type="text" placeholder="Your e-mail..." maxlength="40" name="email"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
 
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your first name..">
+    <input type="text" id="fname" name="firstname" placeholder="Your first name..." maxlength="20">
 
     <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..." maxlength="20">
 
     <label for="subject">Message</label>
-    <textarea id="subject" name="subject" required placeholder="Your message.." maxlength="150"></textarea>
+    <textarea id="subject" name="subject" required placeholder="Your message..." maxlength="150"></textarea>
 
     <input type="submit" value="Send message">
 

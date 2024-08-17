@@ -26,17 +26,21 @@ let pageNumber=0;
 let screenWidth=0;
 
 //news api
-const OptionPath1="/api/search/NewsSearchAPI?q=";
-const OptionPath2="&pageNumber=1&pageSize=50&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null";
+//const OptionPath1="/api/search/NewsSearchAPI?q=";//removed
+const OptionPath1="/youtube-search/?q=";
+const OptionPath2="";
+//const OptionPath2="&pageNumber=1&pageSize=50&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null";
 
 const options = {
 	"method": "GET",
-	"hostname": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+	//"hostname": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+	hostname: 'youtube-search-results.p.rapidapi.com',
 	"port": null,
 	"path": "",
 	"headers": {
 		"X-RapidAPI-Key": process.env.API_KEY,
-		"X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+	//	"X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",//removed
+	'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com',
 		"useQueryString": true
 	}
 };
@@ -58,7 +62,7 @@ app.get("/contact-me",function(req,res){
 app.post("/message-sent",function(req,res){
 
   //just to see the request's body
-  console.log(req.body);
+  //console.log(req.body);
 
   // Define message object to send in database(mongodb)
   var message = {
@@ -101,7 +105,7 @@ app.post("/news",function(request,response){
 	let body=request.body.searchText;
 	body=body.toLowerCase();
 	body=encodeURIComponent(body.trim());
-	console.log(body);
+	//console.log(body);
  	options["path"]=OptionPath1+body+OptionPath2;
 
   const req = https.request(options, function (res) {
@@ -113,33 +117,41 @@ app.post("/news",function(request,response){
 
   	res.on("end", function () {
       let datas=JSON.parse(chunks);
-			datas=datas["value"];
-			numberResults=datas.length; //between 0 to 50 for a given research
-			let news=[];
-			for(let i=0; i<datas.length; i++){
+			//console.log(datas)
 
-					if(datas[i]["image"]["url"]!=""){
+
+
+			datas=datas["videos"];
+			//console.log(datas);
+
+			numberResults=datas.length; //between 0 to 50 for a given research
+			console.log(numberResults)
+
+			let news=[];
+			for(let i=0; i<numberResults; i++){
+
+					if(datas[i]["id"]!="" &&  datas[i]["thumbnail"]!=""){
 						news.push(
-							[ datas[i]["image"]["url"],
+							[ datas[i]["thumbnail"],
 							datas[i]["title"] ,
-								//datas[i]["description"],
-								datas[i]["body"],
-								datas[i]["snippet"],
-								datas[i]["datePublished"]
+								datas[i]["link"],
+								datas[i]["description"],
+								datas[i]["views"]
 						]);
 					}
 
-
-
 			}//end for bracket
-			newsCopy=news;
-			NewsContent=news.slice(0,9);
-			//console.log(news);
-			pageNumber=Math.floor(numberResults/10)+1;
-			pageId=1;
-    response.render('news',{data:NewsContent, numberResults: pageNumber, pageId:1, width:screenWidth});
-  	});
+			//newsCopy=news;
+			//NewsContent=news.slice(0,9);
+			//NewsContent=news;
 
+
+			//console.log(news);
+			/*pageNumber=Math.floor(numberResults/10)+1;
+			pageId=1;
+      response.render('news',{data:NewsContent, numberResults: pageNumber, pageId:1, width:screenWidth});*/
+		  response.render('news',{data:news, numberResults: pageNumber, pageId:1, width:screenWidth});
+	});
 
     res.on("error", (err) => {
    console.log("Error: " + err.message);
@@ -193,6 +205,8 @@ app.post("/news",function(request,response){
 			pageId=1;
 		}
 	}
+
+
 
 	//render page
 	if(newsCopy.length>=pageId*10 -1){
